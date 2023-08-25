@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+											layout:decorate="layouts/common">
+<head>
+<meta charset="ISO-8859-1">
+<title>Main</title>
+</head>
+<body>
+<!-- Home page provides links to the other pages -->
+	<div layout:fragment="content">
+		<h1>Home Page</h1>
+		<h3><a th:href="@{/page1}">Go To Page 1</a></h3>
+		<h3><a th:href="@{/page2}">Go To Page 2</a></h3>
+		<h3><a th:href="@{/page3}">Go To Page 3</a></h3>
+	</div>
+</body>
+</html>
