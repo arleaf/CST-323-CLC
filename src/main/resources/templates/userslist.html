@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+											layout:decorate="layouts/common">
+<head>
+<meta charset="ISO-8859-1">
+<title>Users List</title>
+</head>
+<body>
+<!-- This page displays all of the users in the database-->
+	<div layout:fragment="content">
+		<h1>All Users</h1>
+		<table class="table">
+	        <tr>
+	            <th>ID</th>
+	            <th>First Name</th>
+	            <th>Last Name</th>
+	            <th>Password</th>
+	            <th>Edit</th>
+	        </tr>
+	        <tr th:each="user : ${userList}">
+	            <td th:text="${user.idUser}"></td>
+	            <td th:text="${user.firstName}"></td>
+	            <td th:text="${user.lastName}"></td>
+	            <td th:text="${user.password}"></td>
+	            <td >
+	            	<a  th:href="@{/edituser/{id}(id=${user.idUser})}">
+						<button type="button" class="btn btn-primary">Edit</button>
+					</a>
+				</td>
+	            
+	        </tr>
+   		 </table>
+	</div>
+	
+</body>
+</html>
