@@ -3,16 +3,15 @@
 											layout:decorate="layouts/common">
 <head>
 <meta charset="ISO-8859-1">
-<title>Page 1</title>
+<title>Sign Up</title>
 </head>
 <body>
 <!-- This page provides content for the Page 1 page.  It includes forms to create a userInfo
 object using Thymeleaf and displays the object information in a div using Javascript -->
 	<div layout:fragment="content">
-		<h1>Page 1</h1>
-		<h3><a th:href="@{/}">Go Home</a></h3>
+		<h1>Sign Up</h1>
 		
-		<form action="#" th:action="@{page1}" th:object="${userInfo}" method="post">
+		<form  align action="#" th:action="@{signup}" th:object="${userInfo}" method="post">
 			<table>
 				<tr>
 					<td>First Name:</td><td><input type="text" th:field="*{firstName}"></td>
@@ -24,7 +23,7 @@ object using Thymeleaf and displays the object information in a div using Javasc
 					<td>Password:</td><td><input type="password" th:field="*{password}"></td>
 				</tr>
 				<tr>
-					<td><input type="submit" value="Submit"/></td>
+					<td><input type="submit" value="Sign Up"/></td>
 				</tr>
 			</table>
 		</form>
@@ -32,7 +31,6 @@ object using Thymeleaf and displays the object information in a div using Javasc
 		<!-- Provide the result in a container when it is generated-->
 		<br>
 		<br>
-		<h2>Result</h2>
 		<div id="resultContainer"></div>
 	
 		<script th:inline="javascript">
@@ -45,6 +43,8 @@ object using Thymeleaf and displays the object information in a div using Javasc
 		        var resultContent = document.createElement("div");
 		        resultContent.innerHTML = `
 		            <div id="resultInfo">
+		        		<p><strong>New User Added</p>
+		        		<p><strong>User ID:</strong> ${userInfo.idUser}</p>
 		                <p><strong>First Name:</strong> ${userInfo.firstName}</p>
 		                <p><strong>Last Name:</strong> ${userInfo.lastName}</p>
 		                <p><strong>Password:</strong> ${userInfo.password}</p>
@@ -54,16 +54,13 @@ object using Thymeleaf and displays the object information in a div using Javasc
 		        
 		        // Append result content to the result container
 		        resultContainer.appendChild(resultContent);
-		    }
+		    } 
 		    
 		    function clearFormAndResult() {
 		        // Clear the form fields (assuming they have IDs)
 		        document.getElementById("firstName").value = "";
 		        document.getElementById("lastName").value = "";
 		        document.getElementById("password").value = "";
-		        userInfo.firstName == null;
-		        userInfo.lastName == null;
-		        userInfo.password == null;
 		        
 		        // Clear the result area and hide labels
 		        var resultContainer = document.getElementById("resultContainer");

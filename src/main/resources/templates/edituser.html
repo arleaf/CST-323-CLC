@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-											layout:decorate="layouts/common">>
+											layout:decorate="layouts/common">
 <head>
 <meta charset="ISO-8859-1">
-<title>Page 2</title>
+<title>Edit User</title>
 </head>
 <body>
 <!-- This page provides content for the Page 2 page.  It includes forms to create an
 object using Thymeleaf and displays the object information in a div using Javascript -->
 	<div layout:fragment="content">
-		<h1>Page 2</h1>
-		<h3><a th:href="@{/}">Go Home</a></h3>
-		
-		<form action="#" th:action="@{page2}" th:object="${userInfo}" method="post">
-			<table>
+		<h1>Edit User</h1>
+
+		<p><strong>ID:</strong> <span th:text="${user.idUser}"></span></p>
+	    <p><strong>First Name:</strong> <span th:text="${user.firstName}"></span></p>
+	    <p><strong>Last Name:</strong> <span th:text="${user.lastName}"></span></p>
+	    <p><strong>Password:</strong> <span th:text="${user.password}"></span></p>
+	
+	
+		<form action="#" th:action="@{/edituser/{id}(id=${user.idUser})}" th:object="${user}" method="post">
+		    <table>
 				<tr>
 					<td>First Name:</td><td><input type="text" th:field="*{firstName}"></td>
 				</tr>
@@ -23,53 +28,31 @@ object using Thymeleaf and displays the object information in a div using Javasc
 				<tr>
 					<td>Password:</td><td><input type="password" th:field="*{password}"></td>
 				</tr>
-				<tr>
-					<td><input type="submit" value="Submit"/></td>
-				</tr>
 			</table>
+		    <button type="submit" class="btn btn-primary">Save Changes</button>
+		    <a th:href="@{/userslist}">
+		    	<button type="button" class="btn btn-secondary">Cancel</button>
+		    </a>
 		</form>
+
+
+<!-- 
+		<form th:action="@{userslist}" method="post">
+		    <label for="firstName">First Name:</label>
+		    <input type="text" id="firstName" th:field="*{firstName}" placeholder="${user.firstName}"/>
 		
-		<!-- Provide the result in a container when it is generated-->
-		<br>
-		<br>
-		<h2>Result</h2>
-		<div id="resultContainer"></div>
-	
-		<script th:inline="javascript">
-		    var userInfo = /*[[${userInfo}]]*/ null; // Get the user info from Thymeleaf
-		    // Check if user info is available and form has been submitted
-		    if (userInfo.firstName != null && userInfo.firstName != "" && userInfo.lastName != "" && userInfo.password != "") {
-		        var resultContainer = document.getElementById("resultContainer");
-		        
-		        // Create and populate result content
-		        var resultContent = document.createElement("div");
-		        resultContent.innerHTML = `
-		            <div id="resultInfo">
-		                <p><strong>First Name:</strong> ${userInfo.firstName}</p>
-		                <p><strong>Last Name:</strong> ${userInfo.lastName}</p>
-		                <p><strong>Password:</strong> ${userInfo.password}</p>
-		                <button onclick="clearFormAndResult()">Clear</button>
-		            </div>
-		        `;
-		        
-		        // Append result content to the result container
-		        resultContainer.appendChild(resultContent);
-		    }
-		    
-		    function clearFormAndResult() {
-		        // Clear the form fields (assuming they have IDs)
-		        document.getElementById("firstName").value = "";
-		        document.getElementById("lastName").value = "";
-		        document.getElementById("password").value = "";
-		        userInfo.firstName == null;
-		        userInfo.lastName == null;
-		        userInfo.password == null;
-		        
-		        // Clear the result area and hide labels
-		        var resultContainer = document.getElementById("resultContainer");
-		        resultContainer.innerHTML = "";
-		    }
-		</script>
+		    <label for="lastName">Last Name:</label>
+		    <input type="text" id="lastName" th:field="*{lastName}" placeholder="${user.lastName}"/>
+		
+		    <label for="password">Password:</label>
+		    <input type="text" id="password" th:field="*{password}" placeholder="${user.password}"/>
+		
+		    <button type="submit">Submit</button>
+		    <a th:href="@{/userslist}">
+		        <button type="button" class="btn btn-secondary">Cancel</button>
+		    </a>
+		</form>
+		 -->
 	</div>
 	
 </body>
