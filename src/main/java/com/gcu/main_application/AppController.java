@@ -28,20 +28,6 @@ public class AppController
 	@Autowired UsersRepositoryInterface usersRepositoryInterface;
 	
 	/**
-	 * Page 2 submit.
-	 *
-	 * @param userInfo the user info
-	 * @param model the model
-	 * @return the string
-	 */
-	@PostMapping("/page2")
-	public String page2Submit(@ModelAttribute UsersModel userInfo, Model model)
-	{
-		model.addAttribute("userInfo", userInfo);
-		return "page2";
-	}
-	
-	/**
 	 * Page 3.
 	 *
 	 * @param model the model
