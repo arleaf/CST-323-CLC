@@ -6,8 +6,8 @@
 <title>Edit User</title>
 </head>
 <body>
-<!-- This page provides content for the Page 2 page.  It includes forms to create an
-object using Thymeleaf and displays the object information in a div using Javascript -->
+<!-- This page provides content for the edituser page.  It includes forms to edit a
+user using Thymeleaf -->
 	<div layout:fragment="content">
 		<h1>Edit User</h1>
 
@@ -15,7 +15,6 @@ object using Thymeleaf and displays the object information in a div using Javasc
 	    <p><strong>First Name:</strong> <span th:text="${user.firstName}"></span></p>
 	    <p><strong>Last Name:</strong> <span th:text="${user.lastName}"></span></p>
 	    <p><strong>Password:</strong> <span th:text="${user.password}"></span></p>
-	
 	
 		<form action="#" th:action="@{/edituser/{id}(id=${user.idUser})}" th:object="${user}" method="post">
 		    <table>
@@ -26,7 +25,7 @@ object using Thymeleaf and displays the object information in a div using Javasc
 					<td>Last Name:</td><td><input type="text" th:field="*{lastName}"></td>
 				</tr>
 				<tr>
-					<td>Password:</td><td><input type="password" th:field="*{password}"></td>
+					<td>Password:</td><td><input type="text" th:field="*{password}"></td>
 				</tr>
 			</table>
 		    <button type="submit" class="btn btn-primary">Save Changes</button>
@@ -34,25 +33,6 @@ object using Thymeleaf and displays the object information in a div using Javasc
 		    	<button type="button" class="btn btn-secondary">Cancel</button>
 		    </a>
 		</form>
-
-
-<!-- 
-		<form th:action="@{userslist}" method="post">
-		    <label for="firstName">First Name:</label>
-		    <input type="text" id="firstName" th:field="*{firstName}" placeholder="${user.firstName}"/>
-		
-		    <label for="lastName">Last Name:</label>
-		    <input type="text" id="lastName" th:field="*{lastName}" placeholder="${user.lastName}"/>
-		
-		    <label for="password">Password:</label>
-		    <input type="text" id="password" th:field="*{password}" placeholder="${user.password}"/>
-		
-		    <button type="submit">Submit</button>
-		    <a th:href="@{/userslist}">
-		        <button type="button" class="btn btn-secondary">Cancel</button>
-		    </a>
-		</form>
-		 -->
 	</div>
 	
 </body>

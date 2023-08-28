@@ -10,13 +10,25 @@ import org.springframework.stereotype.Service;
 import com.gcu.main_application.data.DataAccessInterface;
 
 //Implements CRUD operations for Users table
-//This class may not be needed, but I will keep it just in case
+/**
+ * The Class UsersDataService.
+ *
+ * @param <T> the generic type
+ */
+//This class may not be needed because the data access has been 
+//using the Spring Data JPA, but I will keep it for now.
 @Service
 public class UsersDataService<T> implements DataAccessInterface<T> {
 	
+	/** The user repository interface. */
 	@Autowired
 	private UsersRepositoryInterface userRepositoryInterface;
 
+	/**
+	 * Find all.
+	 *
+	 * @return the list
+	 */
 	//Return all users in the table
 	@SuppressWarnings("unchecked")
 	@Override
@@ -38,6 +50,12 @@ public class UsersDataService<T> implements DataAccessInterface<T> {
 		return (List<T>) users;
 	}
 
+	/**
+	 * Find by id.
+	 *
+	 * @param id the id
+	 * @return the t
+	 */
 	//find single UserModel by id
 	@SuppressWarnings("unchecked")
 	@Override
@@ -55,6 +73,12 @@ public class UsersDataService<T> implements DataAccessInterface<T> {
 		return (T) returnUser;
 	}
 
+	/**
+	 * Creates the.
+	 *
+	 * @param user the user
+	 * @return true, if successful
+	 */
 	//create a user
 	public boolean create(UsersModel user) {
 		
@@ -68,6 +92,12 @@ public class UsersDataService<T> implements DataAccessInterface<T> {
 		return true;
 	}
 	
+	/**
+	 * Update.
+	 *
+	 * @param t the t
+	 * @return true, if successful
+	 */
 	//update a single user
 	@Override
 	public boolean update(T t) {
@@ -75,12 +105,24 @@ public class UsersDataService<T> implements DataAccessInterface<T> {
 		return false;
 	}
 
+	/**
+	 * Delete.
+	 *
+	 * @param t the t
+	 * @return true, if successful
+	 */
 	@Override
 	public boolean delete(T t) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
+	/**
+	 * Creates the.
+	 *
+	 * @param t the t
+	 * @return true, if successful
+	 */
 	@Override
 	public boolean create(T t) {
 		return false;
