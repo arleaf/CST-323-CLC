@@ -106,4 +106,17 @@ public class UsersController {
 
         return "redirect:/userslist"; // Redirect back to the user list page
 	}
+	
+	/**
+	 * Delete single user from database
+	 * 
+	 * @param id the id_users
+	 * @return the userslist page
+	 */
+	@GetMapping("/deleteuser/{id}")
+	public String deleteUser(@PathVariable int id) {
+		usersRepositoryInterface.deleteById(id);
+		
+		return "redirect:/userslist"; // Redirect back to the user list page
+	}
 }
