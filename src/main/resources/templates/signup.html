@@ -3,13 +3,13 @@
 											layout:decorate="layouts/common">
 <head>
 <meta charset="ISO-8859-1">
-<title>Sign Up</title>
+<title>Create User</title>
 </head>
 <body>
 <!-- This page provides content for the signup page.  It includes forms to create a userInfo
 object using Thymeleaf and displays the object information in a div using Javascript -->
 	<div layout:fragment="content">
-		<h1>Sign Up</h1>
+		<h1>Create User</h1>
 		
 		<form  align action="#" th:action="@{signup}" th:object="${userInfo}" method="post">
 			<table>
