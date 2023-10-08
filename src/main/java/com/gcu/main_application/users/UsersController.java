@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Controller for directing to pages for creating, listing, and editing Users.
  */
@@ -19,6 +22,9 @@ public class UsersController {
 
 	/** The users repository interface. */
 	@Autowired UsersRepositoryInterface usersRepositoryInterface;
+	
+	private static final Logger logger = LoggerFactory.getLogger(UsersController.class);
+
 	
 	/**
 	 * Show form to create new user in database
@@ -29,7 +35,11 @@ public class UsersController {
 	@GetMapping("/signup")
 	public String signup(Model model) 
 	{
+		logger.info("Entering UsersController.signup()");
+	    
 		model.addAttribute("userInfo", new UsersModel());
+		logger.info("Sign Up Page returned");
+		logger.info("Exiting UsersController.signup()");
 		return "signup";
 	}
 	
@@ -42,13 +52,13 @@ public class UsersController {
 	 */
 	@PostMapping("/signup")
     public String createUser(@ModelAttribute UsersModel userInfo, Model model) {
-
+		logger.info("Entering UsersController.createUser()");
         // Save the new user to the database
         usersRepositoryInterface.save(userInfo);
-
+        logger.info("User: "+ userInfo.getIdUser() + " successfuly created");
         // Send user to the form to be displayed
         model.addAttribute("userInfo", userInfo);
-
+        logger.info("Exiting UsersController.createUser()");
         return "signup"; // Redirect back to the signup page
     }
 	
@@ -61,8 +71,11 @@ public class UsersController {
 	@GetMapping("/userslist")
 	public String listAllUsers(Model model) 
 	{
+		logger.info("Entering UsersController.listAllUsers()");
 		List<UsersModel> userList = (List<UsersModel>) usersRepositoryInterface.findAll();
 		model.addAttribute("userList", userList);
+		logger.info("User List successfully returned.");
+		logger.info("Exiting UsersController.listAllUsers()");
 		return "userslist";
 	}
 	
@@ -76,10 +89,12 @@ public class UsersController {
 	@GetMapping("/edituser/{id}")
 	public String showEditForm(@PathVariable int id, Model model) {
 	    // Retrieve the user from the database based on the ID
+		logger.info("Entering UsersController.showEditForm()");
 	    Optional<UsersModel> userOptional = usersRepositoryInterface.findById(id);
 
         UsersModel user = userOptional.get();
         model.addAttribute("user", user);
+        logger.info("Exiting UsersController.showEditForm()");
         return "edituser"; 
 	}
 
@@ -93,6 +108,7 @@ public class UsersController {
 	@PostMapping("/edituser/{id}")
 	public String processEditForm(@PathVariable int id, @ModelAttribute UsersModel updatedUser) {
 	    // Retrieve the user from the database based on the ID
+		logger.info("Entering UsersController.processEditForm()");
 	    Optional<UsersModel> userOptional = usersRepositoryInterface.findById(id);
 
         UsersModel user = userOptional.get();
@@ -104,6 +120,8 @@ public class UsersController {
         // Save the updated user to the database
         usersRepositoryInterface.save(user);
 
+		logger.info("User: "+ updatedUser.getIdUser() +" successfully updated.");
+		logger.info("Exiting UsersController.processEditForm()");
         return "redirect:/userslist"; // Redirect back to the user list page
 	}
 	
@@ -115,8 +133,11 @@ public class UsersController {
 	 */
 	@GetMapping("/deleteuser/{id}")
 	public String deleteUser(@PathVariable int id) {
+
+		logger.info("Entering UsersController.deleteUser()");
 		usersRepositoryInterface.deleteById(id);
-		
+		logger.info("UserID:"+ id +" successfully deleted");
+		logger.info("Exiting UsersController.processEditForm()");
 		return "redirect:/userslist"; // Redirect back to the user list page
 	}
 }
