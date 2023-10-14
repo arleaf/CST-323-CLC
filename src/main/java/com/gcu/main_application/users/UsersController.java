@@ -15,7 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Controller for directing to pages for creating, listing, and editing Users.
+ * Controller for directing to pages for creating, listing, deleting, and editing Users.
  */
 @Controller
 public class UsersController {

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 public interface UsersRepositoryInterface extends CrudRepository<UsersModel, Integer>{
 
 	/**
-	 * Customer query to find by first name and last name and password.
+	 * Custom query to find by first name and last name and password.
 	 *
 	 * @param firstName the first name
 	 * @param lastName the last name

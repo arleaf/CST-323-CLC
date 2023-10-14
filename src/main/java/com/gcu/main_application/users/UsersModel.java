@@ -39,10 +39,10 @@ public class UsersModel {
 	/**
 	 * Instantiates a new users model.
 	 *
-	 * @param idUser the id user
-	 * @param firstName the first name
-	 * @param lastName the last name
-	 * @param password the password
+	 * @param idUser the id_user in DB
+	 * @param firstName the first_name in DB
+	 * @param lastName the last_name in DB
+	 * @param password the password in DB
 	 */
 	public UsersModel(int idUser, String firstName, String lastName, String password) {
 		this.idUsers = idUser;
@@ -52,7 +52,7 @@ public class UsersModel {
 	}
 	
 	/**
-	 * Gets the id user.
+	 * Gets the idUser.
 	 *
 	 * @return the id user
 	 */
@@ -61,7 +61,7 @@ public class UsersModel {
 	}
 	
 	/**
-	 * Sets the id user.
+	 * Sets the idUser.
 	 *
 	 * @param id the new id user
 	 */
@@ -70,7 +70,7 @@ public class UsersModel {
 	}
 	
 	/**
-	 * Gets the first name.
+	 * Gets the user's first name.
 	 *
 	 * @return the first name
 	 */
@@ -79,7 +79,7 @@ public class UsersModel {
 	}
 	
 	/**
-	 * Sets the first name.
+	 * Sets the user's first name.
 	 *
 	 * @param firstName the new first name
 	 */
@@ -88,7 +88,7 @@ public class UsersModel {
 	}
 	
 	/**
-	 * Gets the last name.
+	 * Gets the user's last name.
 	 *
 	 * @return the last name
 	 */
@@ -97,7 +97,7 @@ public class UsersModel {
 	}
 	
 	/**
-	 * Sets the last name.
+	 * Sets the user's last name.
 	 *
 	 * @param lastName the new last name
 	 */
@@ -106,7 +106,7 @@ public class UsersModel {
 	}
 	
 	/**
-	 * Gets the password.
+	 * Gets the user's password.
 	 *
 	 * @return the password
 	 */
@@ -115,7 +115,7 @@ public class UsersModel {
 	}
 	
 	/**
-	 * Sets the password.
+	 * Sets the user's password.
 	 *
 	 * @param password the new password
 	 */
@@ -127,7 +127,7 @@ public class UsersModel {
 	/**
 	 * To string.
 	 *
-	 * @return the string
+	 * @return the string output of users data
 	 */
 	@Override
 	public String toString() {

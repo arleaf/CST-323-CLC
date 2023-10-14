@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+											layout:decorate="layouts/common">
+<head>
+<meta charset="ISO-8859-1">
+<title>Edit User</title>
+</head>
+<body>
+<!-- This page provides content for the edituser page.  It includes forms to edit a
+user using Thymeleaf -->
+	<div layout:fragment="content">
+		<h1>Edit User</h1>
+
+		<p><strong>ID:</strong> <span th:text="${user.idUser}"></span></p>
+	    <p><strong>First Name:</strong> <span th:text="${user.firstName}"></span></p>
+	    <p><strong>Last Name:</strong> <span th:text="${user.lastName}"></span></p>
+	    <p><strong>Password:</strong> <span th:text="${user.password}"></span></p>
+	
+		<form action="#" th:action="@{/edituser/{id}(id=${user.idUser})}" th:object="${user}" method="post">
+		    <table>
+				<tr>
+					<td>First Name:</td><td><input type="text" th:field="*{firstName}"></td>
+				</tr>
+				<tr>
+					<td>Last Name:</td><td><input type="text" th:field="*{lastName}"></td>
+				</tr>
+				<tr>
+					<td>Password:</td><td><input type="text" th:field="*{password}"></td>
+				</tr>
+			</table>
+		    <button type="submit" class="btn btn-primary">Save Changes</button>	
+		    <a th:href="@{/userslist}">
+		    	<button type="button" class="btn btn-secondary">Cancel</button>
+	    	</a>	    
+		</form>
+	    <a th:href="@{/deleteuser/{id} (id=${user.idUser})}" th:object="${user}">
+	    	<button type="button" class="btn btn-danger">Delete User</button>
+	    </a>
+	</div>
+	
+</body>
+</html>

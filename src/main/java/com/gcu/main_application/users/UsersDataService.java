@@ -13,11 +13,10 @@ import org.slf4j.LoggerFactory;
 //Implements CRUD operations for Users table
 /**
  * The Class UsersDataService.
- *
- * @param <T> the generic type
+ * This class may not be needed because the data access is
+ * currently using the Spring Data JPA.
  */
-//This class may not be needed because the data access has been 
-//using the Spring Data JPA, but I will keep it for now.
+
 @Service
 public class UsersDataService<T> implements DataAccessInterface<T> {
 	
@@ -30,7 +29,7 @@ public class UsersDataService<T> implements DataAccessInterface<T> {
 	/**
 	 * Find all.
 	 *
-	 * @return the list
+	 * @return the list of users
 	 */
 	//Return all users in the table
 	@SuppressWarnings("unchecked")
@@ -59,8 +58,8 @@ public class UsersDataService<T> implements DataAccessInterface<T> {
 	/**
 	 * Find by id.
 	 *
-	 * @param id the id
-	 * @return the t
+	 * @param id
+	 * @return the user by id
 	 */
 	//find single UserModel by id
 	@SuppressWarnings("unchecked")
@@ -85,9 +84,9 @@ public class UsersDataService<T> implements DataAccessInterface<T> {
 	}
 
 	/**
-	 * Creates the.
+	 * Creates the user
 	 *
-	 * @param user the user
+	 * @param user
 	 * @return true, if successful
 	 */
 	//create a user
@@ -107,9 +106,9 @@ public class UsersDataService<T> implements DataAccessInterface<T> {
 	}
 	
 	/**
-	 * Update.
+	 * Update single user
 	 *
-	 * @param t the t
+	 * @param user
 	 * @return true, if successful
 	 */
 	//update a single user
@@ -120,9 +119,9 @@ public class UsersDataService<T> implements DataAccessInterface<T> {
 	}
 
 	/**
-	 * Delete.
+	 * Delete user
 	 *
-	 * @param t the t
+	 * @param user
 	 * @return true, if successful
 	 */
 	@Override
@@ -132,9 +131,9 @@ public class UsersDataService<T> implements DataAccessInterface<T> {
 	}
 
 	/**
-	 * Creates the.
+	 * Creates new user
 	 *
-	 * @param t the t
+	 * @param user
 	 * @return true, if successful
 	 */
 	@Override
